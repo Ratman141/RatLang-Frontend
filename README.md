@@ -1,3 +1,3 @@
 # RatLang 
-is an revolutionary programming language that won't add anything new
+RatLang is an revolutionary programming language that won't add anything new
 
