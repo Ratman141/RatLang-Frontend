@@ -1,6 +1,9 @@
+#pragma once
+
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include "../error/error.h"
 
 enum class TokenType{
     // literals
