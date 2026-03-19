@@ -33,13 +33,14 @@ int main(int argc, char* argv[]) {
         }
 
         std::string fileName = argv[2];
-        std::string fileExtension = fileName.substr(fileName.size() - 3);
+
 
         if(fileName.size() < 4){
             std::cerr<<"Error: Invalid file name."<<std::endl;
             return 1;
         }
-    
+        
+        std::string fileExtension = fileName.substr(fileName.size() - 3);
 
         if(fileExtension != ".rl"){
             std::cerr<<"Error: Invalid file type. Expected .rl file."<<std::endl;

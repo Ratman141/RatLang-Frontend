@@ -32,6 +32,10 @@ add_library(INTERPRETER src/interpreter/interpreter.cpp)
 set_target_properties(INTERPRETER PROPERTIES PREFIX "")
 target_include_directories(INTERPRETER PUBLIC src/interpreter)
 
+add_library(COMMANDS src/commands/commands.cpp)
+set_target_properties(COMMANDS PROPERTIES PREFIX "")
+target_include_directories(COMMANDS PUBLIC src/commands)
+
 add_executable(RatLang src/main.cpp)
 
 target_link_libraries(RatLang PRIVATE
@@ -40,5 +44,6 @@ target_link_libraries(RatLang PRIVATE
     PARSER
     INTERPRETER
     ERROR
+    COMMANDS
 )
 

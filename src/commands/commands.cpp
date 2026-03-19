@@ -45,9 +45,8 @@ namespace cmd{
         }
         else{
             std::cerr<<"Error: Invalid command. Use '--help' for a list of commands.\n";
-            std::cerr<<"Usage: ratlang <command> [arguments]\n";
-            std::cerr<<"If you want to run a file, use 'ratlang --run <file.rl>'\n";
-            throw std::runtime_error("Invalid command");
+            std::cerr<<"Usage: RatLang <command> [arguments]\n";
+            std::cerr<<"If you want to run a file, use 'RatLang --run <file.rl>'\n";
         }
     }
 }

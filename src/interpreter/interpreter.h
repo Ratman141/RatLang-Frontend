@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <vector>
 #include <memory>
+#include <stack>
 #include "../ast/ast.h"
 #include "../error/error.h"
 
