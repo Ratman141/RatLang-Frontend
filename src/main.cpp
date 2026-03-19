@@ -1,13 +1,10 @@
 #include "interpreter/interpreter.h"
-#include "parser/parser.h"
-#include "lexer/lexer.h"
-#include "error/error.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
 
 int main(int argc, char* argv[]) {
-    
+
     // Checks for correct number of arguments
     if(argc < 2){
         std::cerr<<"Error: No input file provided."<<std::endl;
@@ -20,7 +17,12 @@ int main(int argc, char* argv[]) {
 
 
     std::string fileName = argv[1];
-    std::string fileExtension = fileName.substr(fileName.size() - 3, fileName.size());
+    std::string fileExtension = fileName.substr(fileName.size() - 3);
+
+    if(fileName.size() <= 3){
+        std::cerr<<"Error: Invalid file name."<<std::endl;
+        return 1;
+    }
 
     if(fileExtension != ".rl"){
         std::cerr<<"Error: Invalid file type. Expected .rl file."<<std::endl;
@@ -41,7 +43,7 @@ int main(int argc, char* argv[]) {
         
     }
     catch(const LangError& e){
-        file.close();
+        std::cerr << e.what() << std::endl;
         return 1;
     }
     file.close();
