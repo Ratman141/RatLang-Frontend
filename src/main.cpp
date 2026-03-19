@@ -1,7 +1,7 @@
-#include "include/interpreter.h"
-#include "include/parser.h"
-#include "include/lexer.h"
-#include "include/error.h"
+#include "interpreter/interpreter.h"
+#include "parser/parser.h"
+#include "lexer/lexer.h"
+#include "error/error.h"
 #include <fstream>
 #include <sstream>
 
