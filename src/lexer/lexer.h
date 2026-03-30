@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <deque>
 #include "../error/error.h"
 
 enum class TokenType{
@@ -27,9 +28,17 @@ struct Token{
     TokenType type;
     std::string value;
     int line;
+    
+    Token(TokenType t, std::string val, int l) : type(t), value(val), line(l){}
+    Token(){}
 };
 
 class Lexer{
     private:
+        std::string source;
+        std::vector<Token> tokens;
     public:
+        std::vector<std::string> split(const std::string& source, const std::string& delim);        // Makes source code into vector
+        std::vector<Token> tokenize(const std::string& source);
+        Lexer(std::string src) : source(src){};
 };

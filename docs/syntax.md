@@ -5,7 +5,7 @@ main.rl
 ## Variables
 Declare a variable with its type and/or assign a value to it
 ```RatLang
-    int x;
+    int x
     float y = 3.14
     string name = "Goethe"
     bool flag = true
