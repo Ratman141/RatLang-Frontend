@@ -19,7 +19,7 @@ enum class TokenType{
     PLUS, MINUS, MULT, DIV, MOD, EQUALS, EQEQ, NEQ,
     LT, GT, LTE, GTE, AND, OR, NOT,
     // symbols
-    LPAREN, RPAREN, COMMA, COLON, 
+    LPAREN, RPAREN, COMMA, COLON, DOT,
     // other
     IDENTIFIER, EOF_TOKEN
 };

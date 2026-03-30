@@ -24,7 +24,10 @@ std::vector<Token> Lexer::tokenize(const std::string& source){
     Token token;
     // Make tokens untill file ends
     while(src.size() > 0){
-        if(src[0] == "("){
+        if(src[0] == ""){
+            src.pop_front();
+        }
+        else if(src[0] == "("){
             token.type = TokenType::LPAREN;
             token.value = "(";
             tokens.push_back(token);
@@ -48,7 +51,15 @@ std::vector<Token> Lexer::tokenize(const std::string& source){
             tokens.push_back(token);
             src.pop_front();
         }
+        else if(src[0] == "."){
+            token.type = TokenType::DOT;
+            token.value = ".";
+            tokens.push_back(token);
+            src.pop_front();
+        }
     }
-
+    token.type = TokenType::EOF_TOKEN;
+    token.value = "EOF";
+    tokens.push_back(token);
     return tokens;
 }
