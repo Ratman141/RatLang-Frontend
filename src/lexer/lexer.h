@@ -31,35 +31,5 @@ struct Token{
 
 class Lexer{
     private:
-        std::string source;             //source code
-        int start;                      //start position of the current token
-        int current;                    //current position in the source code
-        int line;                       //current line for error reporting
-        std::vector<Token> tokens;      //output tokens
-        std::unordered_map<std::string, TokenType> keywords; //map of keywords to token types
-
-        void scanToken();
-        void scanString();
-        void scanNumber();
-        void scanIdentifier();
-        void skipComment();
-        void skipWhitespace();
-
-        char advance();
-        char peek();
-        char peekNext();
-
-        bool match(char expected);
-
-        bool isAtEnd();
-        bool isDigit(char c);
-        bool isAlpha(char c);
-        bool isAlphaNumeric(char c);
-
-        void addToken(TokenType type);
-        void addToken(TokenType type, const std::string& value);
-
     public:
-        Lexer(const std::string& source);
-        std::vector<Token> tokenize();
 };
