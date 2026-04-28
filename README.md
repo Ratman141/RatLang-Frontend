@@ -1,8 +1,9 @@
 # 🐀 RatLang Frontend
-RatLang is lightweight, versatile language designed for mathematical expression but is not limited to that.
+RatLang is lightweight and versatile language designed for mathematical expressions, but is not limited to them.
 It is focused on simplicity and readability.
 
-! This is only the frontend of the language, it does not contain interpreter nor compiler.
+This is only the frontend of the language.   
+It does not include an interpreter or compiler.
 
 ## 🔹 Features
 - Simple syntax
@@ -13,6 +14,7 @@ It is focused on simplicity and readability.
 ```Bash
 git clone https://github.com/Ratman141/RatLang.git
 cd RatLang
+./build.sh
 ```
 
 ## 📚 Syntax
