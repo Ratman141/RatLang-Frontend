@@ -90,7 +90,7 @@ Built-in libraries
     include io
 ```
 
-User headers
+##User headers
 ```RatLang
     include "myLibrary.rlh"
 ```

@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include <utility>
+#include <unordered_map>
 #include "../ast/ast.h"
 #include "../lexer/lexer.h"
 #include "../error/error.h"

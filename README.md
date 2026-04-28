@@ -2,6 +2,8 @@
 RatLang is lightweight, versatile language designed for mathematical expression but is not limited to that.
 It is focused on simplicity and readability.
 
+! This is only the frontend of the language, it does not contain interpreter nor compiler.
+
 ## 🔹 Features
 - Simple syntax
 - Basic control flow

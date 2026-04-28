@@ -1,65 +1,68 @@
 #include "lexer.h"
+#include "../error/error.h"
+#include <cctype>
 
-std::vector<std::string> split(const std::string& source, const std::string delim){
-    std::vector<std::string> src;
-    size_t start = 0, pos;
-    if(delim == ""){
-        for(char c : source){
-            src.push_back(std::string(1, c));
-        }
-        return src;
-    }
-    while((pos = source.find(delim, start)) != std::string::npos){
-        src.push_back(source.substr(start, pos - start));
-        start = pos + delim.size();
-    }
-    src.push_back(source.substr(start));
-    return src;
+char Lexer::peek(){
+    if(pos >= source.length()) return '\0';
+    return source[pos];
 }
 
-std::vector<Token> Lexer::tokenize(const std::string& source){
-    auto vec = split(source, "");
-    std::deque<std::string> src(vec.begin(), vec.end());
+char Lexer::advance(){
+    return source[pos++];
+}
+
+std::vector<Token> Lexer::tokenize(){
     std::vector<Token> tokens;
-    Token token;
-    // Make tokens untill file ends
-    while(src.size() > 0){
-        if(src[0] == ""){
-            src.pop_front();
+    // Make tokens until file ends
+    while(pos < source.length()){
+        char c = advance();
+        if(c == ' ') continue;
+        else if(c == '\n') line ++;
+        else if(c == '='){
+            if(peek() == '='){
+                advance();
+                tokens.push_back({TokenType::EQEQ, "==", line});
+            }
+            else tokens.push_back({TokenType::EQUALS, "=", line});
         }
-        else if(src[0] == "("){
-            token.type = TokenType::LPAREN;
-            token.value = "(";
-            tokens.push_back(token);
-            src.pop_front();
+        if(c == '!'){
+            if(peek() == '='){
+                advance();
+                tokens.push_back({TokenType::NEQ, "!=", line});
+            }
+            else throw(LexError(line, "Unable to tokenize '!'."));
         }
-        else if(src[0] == ")"){
-            token.type = TokenType::RPAREN;
-            token.value = ")";
-            tokens.push_back(token);
-            src.pop_front();
+        else if(c == '+'){
+            tokens.push_back({TokenType::PLUS, "+", line});
         }
-        else if(src[0] == ","){
-            token.type = TokenType::COMMA;
-            token.value = ",";
-            tokens.push_back(token);
-            src.pop_front();
+        else if(c == '-'){
+            tokens.push_back({TokenType::MINUS, "-", line});
         }
-        else if(src[0] == ":"){
-            token.type = TokenType::COLON;
-            token.value = ":";
-            tokens.push_back(token);
-            src.pop_front();
+        else if(c == '*'){
+            tokens.push_back({TokenType::MULT, "*", line});
         }
-        else if(src[0] == "."){
-            token.type = TokenType::DOT;
-            token.value = ".";
-            tokens.push_back(token);
-            src.pop_front();
+        else if(c == '/'){
+            tokens.push_back({TokenType::DIV, "/", line});
+        }
+        else if(c == '%'){
+            tokens.push_back({TokenType::MOD, "%", line});
+        }
+        else if(c == '('){
+            tokens.push_back({TokenType::LPAREN, "(", line});
+        }
+        else if(c == ')'){
+            tokens.push_back({TokenType::RPAREN, ")", line});
+        }
+        else if(c == ','){
+            tokens.push_back({TokenType::COMMA, ",", line});
+        }
+        else if(c == ':'){
+            tokens.push_back({TokenType::COLON, ":", line});
+        }
+        else if(c == '.'){
+            tokens.push_back({TokenType::DOT, ".", line});
         }
     }
-    token.type = TokenType::EOF_TOKEN;
-    token.value = "EOF";
-    tokens.push_back(token);
+    tokens.push_back({TokenType::EOF_TOKEN, "EOF", line});
     return tokens;
 }
