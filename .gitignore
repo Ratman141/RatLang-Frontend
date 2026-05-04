@@ -2,7 +2,7 @@
 build/
 bin/
 lib/
-
+test-exec/
 # CMake FILES
 CMakeCache.txt
 CMakeFiles/

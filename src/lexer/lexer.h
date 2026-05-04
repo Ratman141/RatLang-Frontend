@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include "../error/error.h"
 
 enum class TokenType{
@@ -12,7 +13,7 @@ enum class TokenType{
     // keywords
     IF, ELSE, END, GOTO, WHEN, LABEL, PRINT,
     ENDLINE, INPUT, FINISH, FUNC, VOID, FLAG,
-    DEFAULT, RETURN, INCLUDE,
+    RETURN, INCLUDE,
     // operators
     PLUS, MINUS, MULT, DIV, MOD, EQUALS, EQEQ, NEQ,
     LT, GT, LTE, GTE, AND, OR, NOT,
@@ -36,8 +37,13 @@ class Lexer{
         std::vector<Token> tokens;
         size_t line = 1;
         size_t pos = 0;
+        static const std::unordered_map<std::string, TokenType> keywords;
         char peek();
+        char peekNext();
         char advance();
+        Token lexNum(char first);
+        Token lexString();
+        Token lexID(char first);
     public:
         std::vector<Token> tokenize();
         Lexer(std::string src) : source(src){};

@@ -34,7 +34,7 @@ if_else     =   "if(" conditions ")"
                 "else"
                     body
                 "end"
-condition   =   expression ( "==" | "!=" | "<" | ">" | "<=" | ">=" ) expression
+condition   =   expression ( "==" | "!=" | "<" | ">" | "<=" | ">=" | "&&") expression
 
 goto        =   "goto" IDENTIFIER
                 "goto" IDENTIFIER "when" IDENTIFIER "==" expression

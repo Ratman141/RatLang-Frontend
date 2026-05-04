@@ -67,13 +67,6 @@ Parentheses require an else branch, parser will error without it
     end
 ```
 
-## Default functions
-Marks an empty function as intentional
-```Ratlang
-    DEFAULT void placeholder()
-    end
-```
-
 ## Finish
 Exits the program
 ```RatLang
@@ -98,4 +91,8 @@ Built-in libraries
 ## Comments
 ```RatLang
     // this is a comment
+    /* another comment */
+    /* third
+    comment
+    */
 ```
