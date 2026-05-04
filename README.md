@@ -17,6 +17,28 @@ cd RatLang
 ./build.sh
 ```
 
+## Running tests
+Error:
+```
+None for now
+```
+Lexer:
+```
+g++ -std=c++17 tests/LEXERTest.cpp src/lexer/lexer.cpp src/error/error.cpp -o test-exec/lexer-test
+```
+Parser:
+```
+None for now
+```
+AST:
+```
+None for now
+```
+Main test:
+```
+None for now
+```
+
 ## 📚 Syntax
 Syntax overview is contained in [docs/syntax.md](docs/syntax.md)
 
