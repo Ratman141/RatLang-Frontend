@@ -9,13 +9,13 @@ enum class TokenType{
     // literals
     INT_LIT, FLOAT_LIT, STRING_LIT, TRUE, FALSE,
     // types
-    INT, FLOAT, STRING, BOOL,
+    INT, FLOAT, CHAR, STRING, BOOL,
     // keywords
     IF, ELSE, END, GOTO, WHEN, LABEL, PRINT,
     ENDLINE, INPUT, FINISH, FUNC, VOID, FLAG,
     RETURN, INCLUDE,
     // operators
-    PLUS, MINUS, MULT, DIV, MOD, EQUALS, EQEQ, NEQ,
+    PLUS, PLUSPLUS, MINUS, MINUSMINUS, MULT, DIV, MOD, EQUALS, EQEQ, NEQ,
     LT, GT, LTE, GTE, AND, OR, NOT,
     // symbols
     LPAREN, RPAREN, COMMA, COLON, DOT,

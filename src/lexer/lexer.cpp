@@ -6,6 +6,7 @@
 const std::unordered_map<std::string, TokenType> Lexer::keywords = {
     {"int", TokenType::INT},
     {"float", TokenType::FLOAT},
+    {"char", TokenType::CHAR},
     {"string", TokenType::STRING},
     {"bool", TokenType::BOOL},
     {"if", TokenType::IF},
@@ -125,10 +126,18 @@ std::vector<Token> Lexer::tokenize(){
                 else tokens.push_back({TokenType::NOT, "!", line});
                 break;
             case '+': 
-                tokens.push_back({TokenType::PLUS, "+", line}); 
+                if(peek() == '+'){
+                    advance();
+                    tokens.push_back({TokenType::PLUSPLUS, "++", line});
+                }
+                else tokens.push_back({TokenType::PLUS, "+", line}); 
                 break;
             case '-': 
-                tokens.push_back({TokenType::MINUS, "-", line}); 
+                 if(peek() == '-'){
+                    advance();
+                    tokens.push_back({TokenType::MINUSMINUS, "++", line});
+                }
+                else tokens.push_back({TokenType::MINUS, "-", line}); 
                 break;
             case '*': 
                 tokens.push_back({TokenType::MULT, "*", line}); 
